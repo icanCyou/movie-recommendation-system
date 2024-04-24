@@ -36,8 +36,13 @@ file_path = os.path.abspath('movie_list.pkl')
 # Load the data from the file
 with open(file_path, 'rb') as file:
     movies = pickle.load(file)
+file_path = os.path.abspath('similarity.pkl')
+
+# Load the data from the file
+with open(file_path, 'rb') as file:
+    similarity = pickle.load(file)
 #movies = pickle.load(open(r'C:\Users\raali\OneDrive\Desktop\ML projects\movie recommender system\movie_list.pkl','rb'))
-similarity = pickle.load(open(r'C:\Users\raali\OneDrive\Desktop\ML projects\movie recommender system\similarity.pkl','rb'))
+#similarity = pickle.load(open(r'C:\Users\raali\OneDrive\Desktop\ML projects\movie recommender system\similarity.pkl','rb'))
 
 movie_list = movies['title'].values
 selected_movie = st.selectbox(
