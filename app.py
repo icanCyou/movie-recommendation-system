@@ -1,6 +1,12 @@
 import pickle
 import streamlit as st
 import requests
+import pickle
+import os
+
+
+
+
 
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(movie_id)
@@ -25,7 +31,12 @@ def recommend(movie):
 
 
 st.header('Movie Recommender System')
-movies = pickle.load(open(r'C:\Users\raali\OneDrive\Desktop\ML projects\movie recommender system\movie_list.pkl','rb'))
+file_path = os.path.abspath('movie_list.pkl')
+
+# Load the data from the file
+with open(file_path, 'rb') as file:
+    movies = pickle.load(file)
+#movies = pickle.load(open(r'C:\Users\raali\OneDrive\Desktop\ML projects\movie recommender system\movie_list.pkl','rb'))
 similarity = pickle.load(open(r'C:\Users\raali\OneDrive\Desktop\ML projects\movie recommender system\similarity.pkl','rb'))
 
 movie_list = movies['title'].values
@@ -41,6 +52,9 @@ if st.button('Show Recommendation'):
         with columns[i]:
             st.text(recommended_movie_names[i])
             st.image(recommended_movie_posters[i])
+
+
+
 
 
 
